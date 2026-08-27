@@ -1,8 +1,8 @@
-import Square from "../Square/Square"
+import Board from "../board/Board"
 function Game() {
   return (
     <>
-    <Square />
+    <Board />
     </>
   )
 }

@@ -1,23 +1,12 @@
 
-.container {
-    display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
-    gap: 7px;
-    width: 50%;
-    justify-content: center;
-}
+
 
 .botao {
     height: 100px;
     width: 100px;
+    color: #0077ff;
+    background-color: rgb(64, 63, 65);
+    border: none;
 }
 
 
-.main{
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-        
