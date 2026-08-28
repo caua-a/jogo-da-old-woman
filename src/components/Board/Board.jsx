@@ -1,3 +1,4 @@
+
 import styles from "./Board.module.css";
 import { useState } from "react";
 import Square from "../Square/Square";
@@ -5,16 +6,6 @@ import Square from "../Square/Square";
 function Board() {
     const [board, setBoard] = useState(Array(9).fill(null));
     const [xIsNext, setXIsNext] = useState(true);
-
-    function handleClick(index) {
-        if (board[index] || vencedor) return;
-
-        const novoBoard = [...board];
-        novoBoard[index] = xIsNext ? 'X' : 'O';
-
-        setBoard(novoBoard);
-        setXIsNext(!xIsNext);
-    }
 
     function checarVencedor(board) {
         if (board[0] && board[0] === board[1] && board[1] === board[2]) return board[0];
@@ -30,34 +21,68 @@ function Board() {
 
         return null;
     }
+    function jogadaIA(board) {
+        const casasLivres = board
+            .map((casa, index) => casa === null ? index : null)
+            .filter(index => index !== null);
 
-    function reset(){
-        setBoard(Array(9).fill(null));
-        setXIsNext(true);
-        document.querySelectorAll('button[type=submit]').forEach((x)=>{
-            x.disabled = false;
-        });
+        const aleatorio = Math.floor(
+            Math.random() * casasLivres.length
+        );
+
+        return casasLivres[aleatorio];
     }
-
     const vencedor = checarVencedor(board);
 
-    if (vencedor) {
-        document.querySelectorAll('button[type=submit]').forEach((x)=>{
-            x.disabled = true;
-        });
-    } else {
-        document.querySelectorAll('button[type=submit]').forEach((x)=>{
-            x.disabled = false;
-        });
+    const ehEmpate = board.every(casa => casa !== null) && !vencedor;
+
+    console.log("BOARD:", board);
+    console.log("VENCEDOR:", vencedor);
+    console.log("EMPATE:", ehEmpate);
+    function handleClick(index) {
+        if (board[index] || vencedor || ehEmpate) return;
+
+        const boardDepoisDoX = [...board];
+
+        boardDepoisDoX[index] = "X";
+
+        setBoard(boardDepoisDoX);
+
+
+        const vencedorX = checarVencedor(boardDepoisDoX);
+
+        if (vencedorX || boardDepoisDoX.every(casa => casa !== null)) {
+            return;
+        }
+
+        const indexIA = jogadaIA(boardDepoisDoX);
+
+        const boardDepoisDaIA = [...boardDepoisDoX];
+
+        boardDepoisDaIA[indexIA] = "O";
+
+        setBoard(boardDepoisDaIA);
     }
-    
-    const jogador = xIsNext ? 'X' : 'O';
-    
+
+    function reset() {
+        setBoard(Array(9).fill(null));
+        setXIsNext(true);
+    }
+
+    const jogador = xIsNext ? "X" : "O";
+
     return (
         <main className={styles.main}>
             <h1>Jogo da Velha</h1>
-            <h2>O vencedor é: {vencedor}</h2>
-            <p>Vez do jogador: {jogador}</p>
+
+            <h2>
+                {vencedor && `O vencedor é: ${vencedor}`}
+                {ehEmpate && "Empate! Deu velha!"}
+            </h2>
+
+            {!vencedor && !ehEmpate && (
+                <p>Vez do jogador: {jogador}</p>
+            )}
 
             <div className={styles.container}>
                 <Square value={board[0]} onClick={() => handleClick(0)} />
@@ -70,10 +95,13 @@ function Board() {
 
                 <Square value={board[6]} onClick={() => handleClick(6)} />
                 <Square value={board[7]} onClick={() => handleClick(7)} />
+
                 <Square value={board[8]} onClick={() => handleClick(8)} />
             </div>
-            
-            <button onClick={reset}>Resetar Jogo</button>
+
+            <button onClick={reset}>
+                Resetar Jogo
+            </button>
         </main>
     );
 }
