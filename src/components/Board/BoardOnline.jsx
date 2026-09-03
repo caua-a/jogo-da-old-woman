@@ -6,13 +6,13 @@ function Board() {
     const [board, setBoard] = useState(Array(9).fill(null));
     const [xIsNext, setXIsNext] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
-    const [modoImpossivel, setModoImpossivel] = useState(true); // Nova IA imbatível
+    const [modoImpossivel, setModoImpossivel] = useState(true);
 
     function checarVencedor(board) {
         const linhas = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Linhas
-            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Colunas
-            [0, 4, 8], [2, 4, 6]             // Diagonais
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], 
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], 
+            [0, 4, 8], [2, 4, 6]           
         ];
 
         for (let linha of linhas) {
@@ -24,17 +24,16 @@ function Board() {
         return null;
     }
 
-    // Algoritmo Minimax - IA IMBATÍVEL
+ 
     function minimax(boardAtual, profundidade, isMaximizando) {
         const vencedor = checarVencedor(boardAtual);
         
-        // Casos base: fim do jogo
-        if (vencedor === 'O') return 10 - profundidade; // IA ganha (quanto mais rápido, melhor)
-        if (vencedor === 'X') return profundidade - 10; // Jogador ganha
-        if (boardAtual.every(casa => casa !== null)) return 0; // Empate
+        
+        if (vencedor === 'O') return 10 - profundidade; 
+        if (vencedor === 'X') return profundidade - 10; 
+        if (boardAtual.every(casa => casa !== null)) return 0;
 
         if (isMaximizando) {
-            // Vez da IA (maximizar score)
             let melhorScore = -Infinity;
             for (let i = 0; i < 9; i++) {
                 if (boardAtual[i] === null) {
@@ -46,7 +45,6 @@ function Board() {
             }
             return melhorScore;
         } else {
-            // Vez do jogador (minimizar score)
             let piorScore = Infinity;
             for (let i = 0; i < 9; i++) {
                 if (boardAtual[i] === null) {
@@ -79,7 +77,6 @@ function Board() {
         return jogada;
     }
 
-    // IA aleatória (modo fácil)
     function jogadaIAAleatoria(boardAtual) {
         const casasLivres = boardAtual
             .map((casa, index) => casa === null ? index : null)
@@ -89,13 +86,12 @@ function Board() {
     }
 
     async function jogadaIA(boardAtual) {
-        // Simula "pensamento" da IA para não ser instantâneo
         await new Promise(resolve => setTimeout(resolve, 500));
         
         if (modoImpossivel) {
-            return melhorJogada([...boardAtual]); // Usa Minimax
+            return melhorJogada([...boardAtual]);
         } else {
-            return jogadaIAAleatoria(boardAtual); // Modo fácil
+            return jogadaIAAleatoria(boardAtual);
         }
     }
 

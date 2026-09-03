@@ -1,156 +1,147 @@
+@import url(../variables.css);
+
 
 .main {
     min-height: 100vh;
-
+  
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+  
     background:
-        radial-gradient(circle at top, #312e81 0%, transparent 35%),
-        radial-gradient(circle at bottom, #581c87 0%, transparent 35%),
-        #09090f;
-
-    color: #ffffff;
-
-    font-family: "Segoe UI", Arial, sans-serif;
-}
-
-/* PAINEL PRINCIPAL */
-
-.main::before {
+      radial-gradient(circle at top, var(--color-bg-radial-top) 0%, transparent 35%),
+      radial-gradient(circle at bottom, var(--color-bg-radial-bottom) 0%, transparent 35%),
+      var(--color-bg-base);
+  
+    color: var(--color-text-primary);
+  
+    font-family: var(--font-family);
+  }
+  
+  .main::before {
     content: "";
-
+  
     position: absolute;
-
-    width: 430px;
-    height: 600px;
-
-    background: rgba(255, 255, 255, 0.04);
-
-    border: 1px solid rgba(255, 255, 255, 0.08);
-
-    border-radius: 30px;
-
-    backdrop-filter: blur(20px);
-
-    box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.5);
-
+  
+    width: var(--card-width);
+    height: var(--card-height);
+  
+    background: var(--glass-bg-card);
+  
+    border: 1px solid var(--glass-border-light);
+  
+    border-radius: var(--radius-card);
+  
+    backdrop-filter: var(--glass-blur-card);
+  
+    box-shadow: var(--shadow-card);
+  
     z-index: 0;
-}
-
-.main > * {
+  }
+  
+  .main > * {
     position: relative;
     z-index: 1;
-}
-
-/* TÍTULO */
-
-.main h1 {
+  }
+  
+  /* TÍTULO */
+  
+  .main h1 {
     margin: 0;
-
-    font-size: 42px;
+  
+    font-size: var(--font-size-title);
     font-weight: 800;
-
+  
     letter-spacing: -1px;
-
-    background: linear-gradient(
-        90deg,
-        #c4b5fd,
-        #a78bfa,
-        #818cf8
-    );
-
+  
+    background: var(--gradient-title);
+  
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
-
-/* STATUS */
-
-.main h2 {
+  }
+  
+  /* STATUS E TEXTO */
+  
+  .main h2 {
     min-height: 28px;
-
+  
     margin: 12px 0 8px;
-
-    font-size: 19px;
+  
+    font-size: var(--font-size-status);
     font-weight: 600;
-
-    color: #c4b5fd;
-
+  
+    color: var(--color-text-accent);
+  
     text-align: center;
-}
-
-.main p {
+  }
+  
+  .main p {
     margin: 0 0 20px;
-
-    font-size: 17px;
-
-    color: #94a3b8;
-}
-
-/* TABULEIRO */
-
-.container {
+  
+    font-size: var(--font-size-body);
+  
+    color: var(--color-text-secondary);
+  }
+  
+  /* CONTAINER DO TABULEIRO */
+  
+  .container {
     display: grid;
-
-    grid-template-columns: repeat(3, 105px);
-    grid-template-rows: repeat(3, 105px);
-
-    gap: 8px;
-
-    padding: 8px;
-
-    background: rgba(255, 255, 255, 0.06);
-
-    border: 1px solid rgba(255, 255, 255, 0.1);
-
-    border-radius: 22px;
-
-    box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.4),
-        inset 0 1px rgba(255, 255, 255, 0.08);
-
-    backdrop-filter: blur(15px);
-}
-
-/* BOTÃO RESET */
-
-.main > button {
+  
+    grid-template-columns: repeat(3, var(--cell-size));
+    grid-template-rows: repeat(3, var(--cell-size));
+  
+    gap: var(--grid-gap);
+  
+    padding: var(--grid-gap);
+  
+    background: var(--glass-bg-board);
+  
+    border: 1px solid var(--glass-border-medium);
+  
+    border-radius: var(--radius-board);
+  
+    box-shadow: var(--shadow-board);
+  
+    backdrop-filter: var(--glass-blur-board);
+  }
+  
+  /* BOTÃO DE REINICIAR (RESET) */
+  
+  .main > button {
     margin-top: 24px;
-
+  
     padding: 12px 30px;
-
-    border: 1px solid rgba(255, 255, 255, 0.12);
-
-    border-radius: 12px;
-
-    background: rgba(139, 92, 246, 0.15);
-
-    color: #ddd6fe;
-
-    font-size: 15px;
+  
+    border: 1px solid var(--glass-border-heavy);
+  
+    border-radius: var(--radius-btn);
+  
+    background: var(--color-btn-bg);
+  
+    color: var(--color-text-muted);
+  
+    font-size: var(--font-size-btn);
     font-weight: 600;
-
+  
     cursor: pointer;
-
-    transition: 0.25s ease;
-
-    backdrop-filter: blur(10px);
-}
-
-.main > button:hover {
-    background: #8b5cf6;
-
-    color: white;
-
+  
+    transition: var(--transition-normal);
+  
+    backdrop-filter: var(--glass-blur-btn);
+  }
+  
+  .main > button:hover {
+    background: var(--color-brand-primary);
+  
+    color: var(--color-text-primary);
+  
     transform: translateY(-2px);
-
-    box-shadow:
-        0 10px 30px rgba(139, 92, 246, 0.35);
-}
-
-.main > button:active {
+  
+    box-shadow: var(--shadow-btn-hover);
+  }
+  
+  .main > button:active {
     transform: scale(0.97);
-}
+  }

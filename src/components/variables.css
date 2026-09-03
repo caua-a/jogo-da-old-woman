@@ -1,0 +1,59 @@
+:root {
+    /* Cores Principais (Paleta Purple/Indigo) */
+    --color-bg-base: #09090f;
+    --color-bg-radial-top: #312e81;
+    --color-bg-radial-bottom: #581c87;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #94a3b8;
+    --color-text-accent: #c4b5fd;
+    --color-text-muted: #ddd6fe;
+  
+    /* Cores de Ação e Interatividade */
+    --color-brand-primary: #8b5cf6;
+    --color-brand-light: #a78bfa;
+    --color-btn-bg: rgba(139, 92, 246, 0.15);
+    --color-btn-cell-bg: rgba(15, 23, 42, 0.75);
+  
+    /* Gradientes */
+    --gradient-title: linear-gradient(90deg, #c4b5fd, #a78bfa, #818cf8);
+  
+    /* Bordas e Vidro (Glassmorphism) */
+    --glass-bg-card: rgba(255, 255, 255, 0.04);
+    --glass-bg-board: rgba(255, 255, 255, 0.06);
+    --glass-border-light: rgba(255, 255, 255, 0.08);
+    --glass-border-medium: rgba(255, 255, 255, 0.1);
+    --glass-border-heavy: rgba(255, 255, 255, 0.12);
+    --glass-blur-card: blur(20px);
+    --glass-blur-board: blur(15px);
+    --glass-blur-btn: blur(10px);
+  
+    /* Dimensões do Tabuleiro e Células */
+    --card-width: 430px;
+    --card-height: 600px;
+    --cell-size: 105px;
+    --grid-gap: 8px;
+  
+    /* Tipografia */
+    --font-family: "Segoe UI", Arial, sans-serif;
+    --font-size-title: 42px;
+    --font-size-status: 19px;
+    --font-size-body: 17px;
+    --font-size-btn: 15px;
+    --font-size-cell: 52px;
+  
+    /* Arredondamento (Border Radius) */
+    --radius-card: 30px;
+    --radius-board: 22px;
+    --radius-cell: 16px;
+    --radius-btn: 12px;
+  
+    /* Sombras */
+    --shadow-card: 0 30px 80px rgba(0, 0, 0, 0.5);
+    --shadow-board: 0 15px 40px rgba(0, 0, 0, 0.4), inset 0 1px rgba(255, 255, 255, 0.08);
+    --shadow-btn-hover: 0 10px 30px rgba(139, 92, 246, 0.35);
+    --shadow-cell-hover: inset 0 0 0 1px rgba(167, 139, 250, 0.2), 0 8px 25px rgba(139, 92, 246, 0.15);
+  
+    /* Animações e Transições */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.25s ease;
+  }
