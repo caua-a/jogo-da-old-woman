@@ -1,8 +1,8 @@
-
-
 .main {
     min-height: 100vh;
-  
+    padding: 20px; /* Evita que o conteúdo encoste nas bordas do viewport em telas pequenas */
+    box-sizing: border-box;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,8 +23,12 @@
   
     position: absolute;
   
-    width: var(--card-width);
-    height: var(--card-height);
+    /* Garante que o card de vidro se ajuste dinamicamente em telas pequenas */
+    width: min(var(--card-width), 100% - 32px);
+    height: 80%  ;
+    max-height: 100%;
+    inset: 0;
+    margin: auto;
   
     background: var(--glass-bg-card);
   
@@ -49,7 +53,8 @@
   .main h1 {
     margin: 0;
   
-    font-size: var(--font-size-title);
+    /* Ajusta dinamicamente a fonte entre 1.8rem e var(--font-size-title) */
+    font-size: clamp(1.8rem, 5vw, var(--font-size-title));
     font-weight: 800;
   
     letter-spacing: -1px;
@@ -58,6 +63,7 @@
   
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-align: center;
   }
   
   /* STATUS E TEXTO */
@@ -81,6 +87,7 @@
     font-size: var(--font-size-body);
   
     color: var(--color-text-secondary);
+    text-align: center;
   }
   
   /* CONTAINER DO TABULEIRO */
@@ -88,8 +95,9 @@
   .container {
     display: grid;
   
-    grid-template-columns: repeat(3, var(--cell-size));
-    grid-template-rows: repeat(3, var(--cell-size));
+
+    grid-template-columns: repeat(3, min(var(--cell-size), 25vw));
+    grid-template-rows: repeat(3, min(var(--cell-size), 25vw));
   
     gap: var(--grid-gap);
   
@@ -104,6 +112,9 @@
     box-shadow: var(--shadow-board);
   
     backdrop-filter: var(--glass-blur-board);
+  
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
   /* BOTÃO DE REINICIAR (RESET) */
@@ -112,6 +123,7 @@
     margin-top: 24px;
   
     padding: 12px 30px;
+    max-width: 100%;
   
     border: 1px solid var(--glass-border-heavy);
   

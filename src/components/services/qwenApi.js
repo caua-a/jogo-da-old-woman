@@ -1,4 +1,3 @@
-// ⚠️ ATENÇÃO: Substitua 'SUA_CHAVE_AQUI' pela sua chave da API do Qwen
 const API_KEY = 'sk-ws-H.DDMPIRD.fc3E.MEYCIQDotFHig8nuVHaFP5eOr8w6r74hWJUjApPfLDV7O_u1hQIhAOcfuMlFDBSG08vTNHpmbFakFgtmftc7E4XUgbbfdBAE';
 const API_URL = 'https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions';
 
@@ -16,9 +15,9 @@ Retorne APENAS o número do índice (0 a 8) onde você quer jogar. Não retorne 
         body: JSON.stringify({
             model: "qwen-turbo",
             messages: [
-                { 
-                    role: "system", 
-                    content: "Você é um jogador de jogo da velha. Responda apenas com o número do índice de 0 a 8." 
+                {
+                    role: "system",
+                    content: "Você é um jogador de jogo da velha. Responda apenas com o número do índice de 0 a 8."
                 },
                 { role: "user", content: prompt }
             ],

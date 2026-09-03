@@ -1,8 +1,10 @@
-
-
 .botao {
-    width: var(--cell-size);
-    height: var(--cell-size);
+    /* Ocupa todo o espaço disponível definido no grid do .container */
+    width: 100%;
+    height: 100%;
+    
+    /* Garante que o aspecto da célula permaneça perfeitamente quadrado */
+    aspect-ratio: 1 / 1;
   
     border: none;
     border-radius: var(--radius-cell);
@@ -11,8 +13,14 @@
   
     color: var(--color-brand-light);
   
-    font-size: var(--font-size-cell);
+    /* Ajusta a fonte do X/O proporcionalmente ao tamanho da célula */
+    font-size: clamp(1.5rem, 8vw, var(--font-size-cell));
     font-weight: 800;
+
+    /* Centraliza os símbolos (X/O) caso não estejam centralizados */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   
     cursor: pointer;
   
@@ -22,21 +30,20 @@
       box-shadow var(--transition-fast);
   
     box-shadow: inset 0 0 0 1px var(--glass-bg-card);
-  }
-  
-  .botao:hover:not(:disabled) {
+}
+
+.botao:hover:not(:disabled) {
     background: rgba(139, 92, 246, 0.12);
   
     transform: translateY(-3px);
   
     box-shadow: var(--shadow-cell-hover);
-  }
-  
-  
-  .botao:disabled {
+}
+
+.botao:disabled {
     cursor: default;
-  }
-  
-  .botao:active:not(:disabled) {
+}
+
+.botao:active:not(:disabled) {
     transform: scale(0.94);
-  }
+}
