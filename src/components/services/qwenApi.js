@@ -24,7 +24,7 @@ Retorne APENAS o número do índice (0 a 8) onde você quer jogar. Não retorne 
             temperature: 0.1
         })
     });
-
+    
     if (!response.ok) {
         throw new Error(`Erro na API: ${response.status}`);
     }

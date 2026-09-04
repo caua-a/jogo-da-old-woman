@@ -129,6 +129,7 @@ function Board() {
     }
 
     const jogador = xIsNext ? "X" : "O";
+    console.log()
 
     return (
         <main className={styles.main}>
@@ -137,11 +138,8 @@ function Board() {
             <div style={{ marginBottom: '20px' }}>
                 <label>
                     <input
-                        type="checkbox"
-                        checked={modoImpossivel}
-                        onChange={(e) => setModoImpossivel(e.target.checked)}
-                    />
-                    {' '}Modo Impossível (IA Imbatível)
+                        type="checkbox" checked={modoImpossivel} onChange={(e) => setModoImpossivel(e.target.checked)} />
+                        {'  '}Dificil
                 </label>
             </div>
 
